@@ -65,7 +65,7 @@ def get_flops_pytorch(model, input_res,
         if isinstance(batch, dict):
             _ = flops_model(**batch)
         else:
-            _ = flops_model(batch)
+            _ = flops_model(batch, batch)
         flops_count, params_count = flops_model.compute_average_flops_cost()
         flops_count += sum(torch_functional_flops)
         flops_count += sum(torch_tensor_ops_flops)
